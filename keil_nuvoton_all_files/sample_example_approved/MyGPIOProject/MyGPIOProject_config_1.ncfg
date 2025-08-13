@@ -1,0 +1,36 @@
+/****************************************************************************
+ * @file     M032SE3AE(LQFP64).ncfg
+ * @version  V1.13.2
+ * @Date     Tue Aug 12 2025 11:13:56 GMT+0300 (GMT+03:00)
+ * @brief    NuMicro clock config file
+ *
+ * @note Please do not modify this file.
+ *       Otherwise, it may not be loaded successfully.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright (C) 2013-2025 Nuvoton Technology Corp. All rights reserved.
+*****************************************************************************/
+MCU:M032SE3AE(LQFP64)
+Reg:CLKDIV0 = 0x00000001
+Reg:CLKDIV4 = 0x00000000
+Reg:PCLKDIV = 0x00000000
+Reg:CLKSEL0 = 0x0000003A
+Reg:CLKSEL1 = 0x4477773A
+Reg:CLKSEL2 = 0x0020032B
+Reg:CLKSEL3 = 0x44444400
+Reg:PWRCTL = 0x02310013
+Reg:AHBCLK = 0x00000000
+Reg:APBCLK0 = 0x00010001
+Reg:APBCLK1 = 0x00000000
+Reg:PLLCTL = 0x0000C219
+Reg:CLKOCTL = 0x00000000
+Reg:SYST_CTRL = 0x00000000
+Reg:RTC_LXTCTL = 0x00000000
+LXT:32768
+HXT:32000000
+LIRC:0
+HIRC:0
+PLL:72000000
+Step:4
+/*** (C) COPYRIGHT 2013-2025 Nuvoton Technology Corp. ***/
