@@ -1,0 +1,68 @@
+Program pins(KN8-CHANNEL8):
+
+	PF.0-PGD
+	PF.1-PGC
+	NRESET-NRESET
+TFT Display pins(I2C):
+	
+	PC.1-OSD_SCL(OSD:OPEN SCREEN DISPLAY)
+	PC.0-OSD_SDA
+
+Ringtone pins(on PWM):
+
+	PA.3-SES_SEVİYE_4
+	PA.2-SES_SEVİYE_3
+	PA.1-SES_SEVİYE_2
+	PA.0-SES_SEVİYE_1
+	
+Doorbell pins(unknown):
+
+	PF.15-İÇZİL_İNPUT
+
+Button pins:
+
+	PB.6-TUS_ADC(Not just button, ADC with button)
+	PB.5-KAPI_BUTON
+	PB.4-KAPICI_BUTON
+	PB.3-GÜVENLİK_BUTON
+	PB.2-KİLİT_BUTON
+	
+
+Useless pins(it depends display):
+
+	PB-1-CMBR_SCL
+	PB.0-CMBR_SDA
+	PB.7-CMBR_INT
+Led pins:
+
+	PA.13-PLED
+	PA.11-LED
+
+Communication pins(uart):
+
+	PF.3-HABERLEŞME_TX
+	PF.2-HABERLEŞME_RX
+
+Unknown pins yet(check revise it could be change):
+
+	PC.5-ZOUT_PWM
+	PC.4-KAOI_ÖNÜNE_BAGLAN
+	PC.3-KAPICIYA_BAGLAN
+	PC.2-KAPIYA_BAGLAN
+	
+	PA.9-MONITOR_BES
+	PA.8-ANFI_BES
+	PA.12-IK_KONTROL
+	PA.14-VIDEO_SEÇ
+	
+	PF.5-TONE
+	PF.4-SES_BESLEME
+	
+
+
+	
+
+	
+	
+	
+
