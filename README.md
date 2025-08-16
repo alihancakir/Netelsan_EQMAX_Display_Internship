@@ -1,4 +1,8 @@
-# NETELSAN Internship 🚀
+<p align="left"> 
+   <img src="https://avatars.mds.yandex.net/i?id=d4bda66315afe0cebc3aaf1e5ff81cda1de4aeb3-12925719-images-thumbs&n=13" alt="Netelsan Logo" width="300">
+</p>  
+
+# NETELSAN Internship
 
 ## 📢 _**Task: Wake Up the Intercom Unit From Zero**_
 
