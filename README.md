@@ -104,3 +104,138 @@ All documentation related to the internship is shared here.
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/TFT_Test_Design_Schematic/Test_For_Tft/TFT_TEST_SCHEMATIC.jpg" alt="Test Kit Schematic" width="600">
   </p>  
 
+
+  ---
+
+## 📝 Day 6  
+
+- Before starting the work on **I2C communication**, I made sure to understand everything about the process.
+ 
+  Understanding I2C Protocol:
+  <p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_I2C_(1).jpg" alt="Understanding I2C" width="400">
+  </p>
+  <p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_I2C(2).jpg" alt="Understanding I2C" width="400">
+  </p>
+  
+- For the **coherent**, I examined the **AMT630A I2C specification** from  → [url](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/AMT630A%20Driver%20Documents/Specifications_of_AMT630A.pdf)  
+- Optimum frequency is **400 kHz**.
+
+  <p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/AMT630A_Specifications.jpg" alt="Configuration I2C" width="400">
+  </p>
+
+  > ✅ Prepared with the required knowledge for proper I2C implementation.
+
+  ---
+
+## 📝 Day 7
+
+- **AMT630A** has a **3-byte command array** (see figure).  
+  - **First byte**: Register group address  
+  - **Second byte**: Sub-register address  
+  - **Third byte**: Register value
+ 
+   Command Array:
+    <p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Connect_To_AMT630A.jpg" alt="Connetion to AMT630A" width="400">
+  </p>
+
+- ⚠️ Attention:  
+  - I2C address is fixed **7 bits** + **1 R/W bit**. It could be `0` or `1`.  
+  - We are sending data **master → slave**.  
+  - However, the first byte of the *command array* is **8 bits**.  
+  - Therefore, we must **shift right**: `8 bits >> 1 = 7 bits`.  
+  - The least significant bit (`2^0`) must always be **0** (write mode).  
+
+   ```c
+   --------------------------------------------------------------------------------------------------------------------------------
+   |  Start Condition  |     Slave Address     |      R/W      |  ACK  |     DATA1     |  ACK  |     DATA1     |  Stop Condition  |
+   --------------------------------------------------------------------------------------------------------------------------------
+   |  SDA pull down    |  it must be 7 bit     |  it must be 0 |       |   it fixed    |       |   it fixed    |   SCL pull up    |
+   |      delay        |  (convert to 7 bit    |  due to we    |       |    8 bits     |       |    8 bits     |      delay       |
+   |  SCL pull down    |  from 8bit:(0xXX >>1) |  always write |       |               |       |               |   SDA pull up    |
+   --------------------------------------------------------------------------------------------------------------------------------
+   
+   static void write_byte(uint8_t reg_addr, uint8_t data1, uint8_t data2) {
+       //...
+       i2c_master_write_to_device(
+           I2C_MASTER_NUM, 
+           reg_addr >> 1, 
+           write_buf_3_bytes, 
+           sizeof(write_buf_3_bytes), 
+           I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS
+       );
+       //...
+   }
+   
+   void app_main(void) {
+       //...
+       write_byte(0xBE, 0xC6, 0x40);
+       write_byte(0xB6, 0x78, 0x02);
+       //...
+   }
+
+- Due to occasional failures, **I2C communication was not always working fluently**.  
+- Therefore, I tested the communication using an **I2C scanner code** to verify proper detection address.
+  > ⚠️ Issue: I2C communication was not always working fluently.
+
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Scanner_Consequence.jpg" alt="Scanner Consequence" width="400">
+  </p>
+
+  ---
+
+## 📝 Day 8
+
+- I examined the registers at [AMT630A register setting](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/AMT630A%20Driver%20Documents/Ark%20AMT630A%20Register%20settings.pdf).  
+- Example command array to set **brightness value 100**: `(0xB4, 0xD4, 0x64)`  
+  - `0x64` corresponds to **decimal 100**.  
+- Tested the definition and confirmed proper operation on the **test kit**.  
+
+> ✅ Successfully verified register write and brightness control for AMT630A.  
+
+
+  ---
+
+## 📝 Day 9
+
+- With **I2C**, connected and tested the **RGB display**.  
+  - This means I finally reached the **target device**.  
+- During the examination of **AMT630A register settings**, the **color register process** is defined as: `FB2AH`  
+  - `FB` is the **MCU address**  
+  - `2A` is the **register address**  
+  - The next byte must be the **value**  
+
+- Example command:  
+```c
+write_byte(0xB6, 0x2A, 0x20); // Set background color to green
+```
+
+[Video](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/Videos/RGB_Test_EQMAX.mp4)
+
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Display_RGB_Test.png" width="600">
+  </p>
+
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/I2C_Communication_eventually_done_from_ESP32_TestKit_To_Target_Device.jpg" alt="Conneted the Target Device" width="600">
+  </p>
+
+  ---
+  
+
+## 📝 Day 10
+
+
+> ✅ Test environment is now set up for running I2C and display control programs.
+
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Test_Kit_Revised.jpg" alt="Test Kit Revised" width="600">
+  </p>
+
+
+  
+
+  
