@@ -1,0 +1,123 @@
+!SESSION 2025-08-26 13:02:40.821 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.6
+java.vendor=Amazon.com Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-08-26 13:03:20.174
+!MESSAGE Enablement expression is missing for descriptor type com.espressif.idf.debug.gdbjtag.openocd.descriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-08-26 13:03:20.178
+!MESSAGE Enablement expression is missing for config provider for com.espressif.idf.debug.gdbjtag.openocd.descriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-08-26 13:03:20.179
+!MESSAGE Enablement expression is missing for config provider for com.espressif.idf.launch.serial.core.idf.descriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-08-26 13:03:20.184
+!MESSAGE Enablement expression is missing for descriptor type com.espressif.idf.launch.serial.core.idf.descriptorType
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-08-26 13:03:20.185
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Nitro'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:24.230
+!MESSAGE Initializing toolchain...
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:24.232
+!MESSAGE idf_tools.py path: null/tools/idf_tools.py
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:24.233
+!MESSAGE idf_tools.py path doesn't exist
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:24.234
+!MESSAGE [C:\msys64\mingw64\bin;C:\Program Files\Common Files\Siemens\Automation\Simatic OAM\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\MATLAB\R2021b\runtime\win64;D:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PROGRA~2\PICC;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Git\cmd;C:\Users\Nitro\anaconda3;C:\Users\Nitro\anaconda3\Library\usr\bin;C:\Users\Nitro\anaconda3\Library\bin;C:\Users\Nitro\anaconda3\Scripts;C:\Users\Nitro\AppData\Local\Microsoft\WindowsApps;C:\Users\Nitro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Nitro\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\Nitro\AppData\Local\GitHubDesktop\bin;C:\CTOOLS\bin;C:\CTOOLS\mingw32\bin;]
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:28.555
+!MESSAGE Eclipse Install location::file:/C:/Espressif/tools/espressif-ide/3.0.0/
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:28.654
+!MESSAGE 
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:28.659
+!MESSAGE Executing C:/Espressif/python_env/idf5.2_py3.11_env/Scripts/python.exe C:\Espressif\frameworks\esp-idf-v5.2.2\tools\idf_tools.py install all
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:28.661
+!MESSAGE {USERDOMAIN_ROAMINGPROFILE=DESKTOP-QDB1DAC, LOCALAPPDATA=C:\Users\Nitro\AppData\Local, PROCESSOR_LEVEL=23, AutInstLog=C:\ProgramData\Siemens\Automation\Logfiles\Setup\, USERDOMAIN=DESKTOP-QDB1DAC, LOGONSERVER=\\DESKTOP-QDB1DAC, SESSIONNAME=Console, ALLUSERSPROFILE=C:\ProgramData, PROCESSOR_ARCHITECTURE=AMD64, PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\PowerShell\Modules\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\PowerShell\Modules\, IDF_TOOLS_PATH=C:\Espressif, SystemDrive=C:, OneDrive=C:\Users\Nitro\OneDrive, APPDATA=C:\Users\Nitro\AppData\Roaming, IDF_COMPONENT_STORAGE_URL=file:///C:/Espressif/registry;default, VBOX_HWVIRTEX_IGNORE_SVM_IN_USE=1, Simatic_OAM=C:\Program Files\Common Files\Siemens\Automation\Simatic OAM, USERNAME=Nitro, ProgramFiles(x86)=C:\Program Files (x86), CommonProgramFiles=C:\Program Files\Common Files, Path=C:\msys64\mingw64\bin;C:\Program Files\Common Files\Siemens\Automation\Simatic OAM\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\MATLAB\R2021b\runtime\win64;D:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PROGRA~2\PICC;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Git\cmd;C:\Users\Nitro\anaconda3;C:\Users\Nitro\anaconda3\Library\usr\bin;C:\Users\Nitro\anaconda3\Library\bin;C:\Users\Nitro\anaconda3\Scripts;C:\Users\Nitro\AppData\Local\Microsoft\WindowsApps;C:\Users\Nitro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Nitro\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\Nitro\AppData\Local\GitHubDesktop\bin;C:\CTOOLS\bin;C:\CTOOLS\mingw32\bin;, IDF_PYTHON=C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe, PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC, DriverData=C:\Windows\System32\Drivers\DriverData, OS=Windows_NT, COMPUTERNAME=DESKTOP-QDB1DAC, EFC_1192_1592913036=1, PROCESSOR_REVISION=1801, CommonProgramW6432=C:\Program Files\Common Files, ComSpec=C:\WINDOWS\system32\cmd.exe, Simatic_OAM_DATA=C:\ProgramData\Siemens\Automation\Simatic OAM, ProgramData=C:\ProgramData, ProgramW6432=C:\Program Files, HOMEPATH=\Users\Nitro, SystemRoot=C:\WINDOWS, TEMP=C:\Users\Nitro\AppData\Local\Temp, HOMEDRIVE=C:, PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD, USERPROFILE=C:\Users\Nitro, TMP=C:\Users\Nitro\AppData\Local\Temp, CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files, ProgramFiles=C:\Program Files, PUBLIC=C:\Users\Public, NUMBER_OF_PROCESSORS=8, windir=C:\WINDOWS, =::=::\}
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:30.598
+!MESSAGE Executing C:/Espressif/python_env/idf5.2_py3.11_env/Scripts/python.exe C:\Espressif\frameworks\esp-idf-v5.2.2\tools\idf_tools.py install-python-env
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:03:30.599
+!MESSAGE {USERDOMAIN_ROAMINGPROFILE=DESKTOP-QDB1DAC, LOCALAPPDATA=C:\Users\Nitro\AppData\Local, PROCESSOR_LEVEL=23, AutInstLog=C:\ProgramData\Siemens\Automation\Logfiles\Setup\, USERDOMAIN=DESKTOP-QDB1DAC, LOGONSERVER=\\DESKTOP-QDB1DAC, SESSIONNAME=Console, ALLUSERSPROFILE=C:\ProgramData, PROCESSOR_ARCHITECTURE=AMD64, PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\PowerShell\Modules\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\PowerShell\Modules\, IDF_TOOLS_PATH=C:\Espressif, SystemDrive=C:, OneDrive=C:\Users\Nitro\OneDrive, APPDATA=C:\Users\Nitro\AppData\Roaming, IDF_COMPONENT_STORAGE_URL=file:///C:/Espressif/registry;default, VBOX_HWVIRTEX_IGNORE_SVM_IN_USE=1, Simatic_OAM=C:\Program Files\Common Files\Siemens\Automation\Simatic OAM, USERNAME=Nitro, ProgramFiles(x86)=C:\Program Files (x86), CommonProgramFiles=C:\Program Files\Common Files, Path=C:\msys64\mingw64\bin;C:\Program Files\Common Files\Siemens\Automation\Simatic OAM\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\MATLAB\R2021b\runtime\win64;D:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PROGRA~2\PICC;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Git\cmd;C:\Users\Nitro\anaconda3;C:\Users\Nitro\anaconda3\Library\usr\bin;C:\Users\Nitro\anaconda3\Library\bin;C:\Users\Nitro\anaconda3\Scripts;C:\Users\Nitro\AppData\Local\Microsoft\WindowsApps;C:\Users\Nitro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Nitro\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\Nitro\AppData\Local\GitHubDesktop\bin;C:\CTOOLS\bin;C:\CTOOLS\mingw32\bin;, IDF_PYTHON=C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe, PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC, DriverData=C:\Windows\System32\Drivers\DriverData, OS=Windows_NT, COMPUTERNAME=DESKTOP-QDB1DAC, EFC_1192_1592913036=1, PROCESSOR_REVISION=1801, CommonProgramW6432=C:\Program Files\Common Files, ComSpec=C:\WINDOWS\system32\cmd.exe, Simatic_OAM_DATA=C:\ProgramData\Siemens\Automation\Simatic OAM, ProgramData=C:\ProgramData, ProgramW6432=C:\Program Files, HOMEPATH=\Users\Nitro, SystemRoot=C:\WINDOWS, TEMP=C:\Users\Nitro\AppData\Local\Temp, HOMEDRIVE=C:, PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD, USERPROFILE=C:\Users\Nitro, TMP=C:\Users\Nitro\AppData\Local\Temp, CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files, ProgramFiles=C:\Program Files, PUBLIC=C:\Users\Public, NUMBER_OF_PROCESSORS=8, windir=C:\WINDOWS, =::=::\}
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.355
+!MESSAGE Executing C:/Espressif/python_env/idf5.2_py3.11_env/Scripts/python.exe C:\Espressif\frameworks\esp-idf-v5.2.2\tools\idf_tools.py export --format=key-value
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.945
+!MESSAGE Key: OPENOCD_SCRIPTS Value: C:\Espressif\tools\openocd-esp32\v0.12.0-esp32-20240318\openocd-esp32\share\openocd\scripts
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.946
+!MESSAGE Key: IDF_CCACHE_ENABLE Value: 1
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.947
+!MESSAGE Key: ESP_ROM_ELF_DIR Value: C:\Espressif\tools\esp-rom-elfs\20230320\
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.948
+!MESSAGE Key: IDF_PYTHON_ENV_PATH Value: C:\Espressif\python_env\idf5.2_py3.11_env
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.949
+!MESSAGE Key: ESP_IDF_VERSION Value: 5.2
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.950
+!MESSAGE Key: PATH Value: C:\Espressif\tools\xtensa-esp-elf-gdb\14.2_20240403\xtensa-esp-elf-gdb\bin;C:\Espressif\tools\riscv32-esp-elf-gdb\14.2_20240403\riscv32-esp-elf-gdb\bin;C:\Espressif\tools\xtensa-esp-elf\esp-13.2.0_20230928\xtensa-esp-elf\bin;C:\Espressif\tools\esp-clang\16.0.1-fe4f10a809\esp-clang\bin;C:\Espressif\tools\riscv32-esp-elf\esp-13.2.0_20230928\riscv32-esp-elf\bin;C:\Espressif\tools\esp32ulp-elf\2.35_20220830\esp32ulp-elf\bin;C:\Espressif\tools\cmake\3.24.0\bin;C:\Espressif\tools\openocd-esp32\v0.12.0-esp32-20240318\openocd-esp32\bin;C:\Espressif\tools\ninja\1.11.1\;C:\Espressif\tools\idf-exe\1.0.3\;C:\Espressif\tools\ccache\4.8\ccache-4.8-windows-x86_64;C:\Espressif\tools\dfu-util\0.11\dfu-util-0.11-win64;C:\Espressif\tools\qemu-xtensa\esp_develop_8.2.0_20240122\qemu\bin;C:\Espressif\tools\qemu-riscv32\esp_develop_8.2.0_20240122\qemu\bin;C:\Espressif\python_env\idf5.2_py3.11_env\Scripts;C:\Espressif\frameworks\esp-idf-v5.2.2\tools;%PATH%
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:22.951
+!MESSAGE Key: IDF_DEACTIVATE_FILE_PATH Value: C:\Users\Nitro\AppData\Local\Temp\tmpoaek_5mcidf_14576
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:23.051
+!MESSAGE Executing C:\Espressif\python_env\idf5.2_py3.11_env/Scripts/python.exe C:\Espressif\frameworks\esp-idf-v5.2.2\tools\idf.py --list-targets
+
+!ENTRY com.espressif.idf.core 1 0 2025-08-26 13:04:23.052
+!MESSAGE {USERDOMAIN_ROAMINGPROFILE=DESKTOP-QDB1DAC, LOCALAPPDATA=C:\Users\Nitro\AppData\Local, PROCESSOR_LEVEL=23, AutInstLog=C:\ProgramData\Siemens\Automation\Logfiles\Setup\, USERDOMAIN=DESKTOP-QDB1DAC, LOGONSERVER=\\DESKTOP-QDB1DAC, SESSIONNAME=Console, ALLUSERSPROFILE=C:\ProgramData, PROCESSOR_ARCHITECTURE=AMD64, PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\PowerShell\Modules\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\PowerShell\Modules\, IDF_TOOLS_PATH=C:\Espressif, SystemDrive=C:, OneDrive=C:\Users\Nitro\OneDrive, APPDATA=C:\Users\Nitro\AppData\Roaming, IDF_COMPONENT_STORAGE_URL=file:///C:/Espressif/registry;default, VBOX_HWVIRTEX_IGNORE_SVM_IN_USE=1, Simatic_OAM=C:\Program Files\Common Files\Siemens\Automation\Simatic OAM, USERNAME=Nitro, ProgramFiles(x86)=C:\Program Files (x86), CommonProgramFiles=C:\Program Files\Common Files, Path=C:\msys64\mingw64\bin;C:\Program Files\Common Files\Siemens\Automation\Simatic OAM\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\MATLAB\R2021b\runtime\win64;D:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PROGRA~2\PICC;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Git\cmd;C:\Users\Nitro\anaconda3;C:\Users\Nitro\anaconda3\Library\usr\bin;C:\Users\Nitro\anaconda3\Library\bin;C:\Users\Nitro\anaconda3\Scripts;C:\Users\Nitro\AppData\Local\Microsoft\WindowsApps;C:\Users\Nitro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Nitro\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\Nitro\AppData\Local\GitHubDesktop\bin;C:\CTOOLS\bin;C:\CTOOLS\mingw32\bin;, IDF_PYTHON=C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe, PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC, DriverData=C:\Windows\System32\Drivers\DriverData, OS=Windows_NT, COMPUTERNAME=DESKTOP-QDB1DAC, EFC_1192_1592913036=1, PROCESSOR_REVISION=1801, CommonProgramW6432=C:\Program Files\Common Files, ComSpec=C:\WINDOWS\system32\cmd.exe, Simatic_OAM_DATA=C:\ProgramData\Siemens\Automation\Simatic OAM, ProgramData=C:\ProgramData, ProgramW6432=C:\Program Files, HOMEPATH=\Users\Nitro, SystemRoot=C:\WINDOWS, TEMP=C:\Users\Nitro\AppData\Local\Temp, HOMEDRIVE=C:, PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD, USERPROFILE=C:\Users\Nitro, TMP=C:\Users\Nitro\AppData\Local\Temp, CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files, ProgramFiles=C:\Program Files, PUBLIC=C:\Users\Public, NUMBER_OF_PROCESSORS=8, windir=C:\WINDOWS, =::=::\}
+
+!ENTRY com.espressif.idf.ui 4 2 2025-08-26 13:04:25.884
+!MESSAGE Problems occurred when invoking code from plug-in: "com.espressif.idf.ui".
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "idfToolSets" is null
+	at com.espressif.idf.ui.InitializeToolsStartup$ToolsInstallationJobChangeListener.done(InitializeToolsStartup.java:363)
+	at org.eclipse.core.internal.jobs.JobListeners.sendEvent(JobListeners.java:160)
+	at org.eclipse.core.internal.jobs.JobListeners.sendEventsAsync(JobListeners.java:140)
+	at org.eclipse.core.internal.jobs.JobListeners.waitAndSendEvents(JobListeners.java:80)
+	at org.eclipse.core.internal.jobs.JobManager.withWriteLock(JobManager.java:550)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:751)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:83)
+
+!ENTRY com.espressif.idf.ui 4 1 2025-08-26 13:04:25.885
+!MESSAGE Constraint file: C:\Espressif\espidf.constraints.v5.2.txt
+
+Requirement files:
+
+ - C:/Espressif/frameworks/esp-idf-v5.2.2/tools\requirements\requirements.core.txt
+
+Python being checked: C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe
+
+The following Python requirements are not satisfied:
+
+Requirement 'setuptools<71.0.1,>=21' was not met. Installed version: 80.9.0
+
+To install the missing packages, please run "install.bat"
+
+Diagnostic information:
+
+    IDF_PYTHON_ENV_PATH: C:\Espressif\python_env\idf5.2_py3.11_env
+
+    Python interpreter used: C:\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe
+
+
+ESP-IDF v5.2.2-dirty
+

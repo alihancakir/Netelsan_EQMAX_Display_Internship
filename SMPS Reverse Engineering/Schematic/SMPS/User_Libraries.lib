@@ -1,0 +1,22 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# POT_3pins
+#
+DEF POT_3pins VR 0 40 Y Y 1 F N
+F0 "VR" -50 -50 39 H V C CNN
+F1 "POT_3pins" -50 0 39 H V C CNN
+F2 "" 0 0 39 H I C CNN
+F3 "" 0 0 39 H I C CNN
+DRAW
+S -100 -345 -50 -355 1 1 6 N
+S -100 -145 -50 -155 1 1 6 N
+S -100 -100 0 -400 1 1 10 f
+S -50 -245 0 -255 1 1 6 N
+X Pin_1 1 -250 -150 150 R 50 50 1 1 P
+X Pin_2 2 150 -250 150 L 50 50 1 1 P
+X Pin_3 3 -250 -350 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library
