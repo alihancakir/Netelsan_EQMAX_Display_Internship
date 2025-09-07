@@ -346,3 +346,148 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
 <p align="center">
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Firmware_codes.jpg" alt="Firmware" width="600">
 </p>
+
+---
+
+## 📝 Day 16
+
+- Displayed characters and numbers on the screen.
+- Utilized a custom font array to show characters by defining the address for each character.
+  ### Font Array Definition:
+  ```c
+  
+ 	#define SPACE          0x0000
+	#define N_0            0x0001
+	#define N_1            0x0002
+     	.                       .
+     	.                       .
+     	.                       .
+	#define A              0x000B
+	#define B              0x000C
+	#define C              0x000D
+     	.                       .
+     	.                       .
+     	.                       .
+	#define END            0x0135
+  ```
+- After testing various combinations to display text, the following function was used to show characters based on the defined font:
+ ```c  
+//Show char from included font
+void show_char(uint8_t position,uint16_t font){  //Addressed according to the defined dimensions of block0.
+	
+    write_byte(OSD_GROUP_ADDR,INDEX_RAM_ADD_H,0x00);
+    write_byte(OSD_GROUP_ADDR,INDEX_RAM_ADD_L,position);
+    write_byte(OSD_GROUP_ADDR,INDEX_RAM_DATA_H,(font>>8));
+    write_byte(OSD_GROUP_ADDR,INDEX_RAM_DATA_L,font);	
+}
+ ```
+ > ⚠️ Issue: With the character size not fitting the 16x22 font dimensions, so I used a scaler to adjust the character size:
+ ```c
+write_byte(OSD_GROUP_ADDR, 0x76, 0x13); // x-axis scaling [4:0]
+write_byte(OSD_GROUP_ADDR, 0x77, 0x13); // y-axis scaling [4:0]
+ ```
+- My advisor asked for a code block: "We are using sequence char array but it is too hard. Please make an easier method."
+- I created a simpler solution, and here is how it can be used:
+```c
+uint16_t info_1[]={N,E,T,E,L,S,A,N,SPACE,A,R,G,E,END};	//The END flag is for size of text: 	
+show_string(1,2,info_1);				//vertical pos, horizontal pos: row and column
+
+//string font to sent
+void show_string(uint8_t vertical_position,uint8_t horizontal_position, uint16_t str[]){
+	write_byte(OSD_GROUP_ADDR,INDEX_RAM_ADD_H,0x00);
+	uint8_t position;	
+	if(vertical_position>0 && vertical_position<12){
+		if(horizontal_position>=0 && horizontal_position<30){
+			vertical_position*=30;							//whole row font pcs is 30.
+			position=(vertical_position)+(horizontal_position);			
+			for(int i=0; i<30;i++){
+				if(str[i]!=END){						//END byte sent: over the write font
+					//char size scale				
+					write_byte(OSD_GROUP_ADDR, 0x76, 0x10);//x		//set char size
+					write_byte(OSD_GROUP_ADDR, 0x77, 0x16);//y		//set char size			
+				    write_byte(OSD_GROUP_ADDR,INDEX_RAM_ADD_L,position++);
+				    printf("position: %d:",position);
+				    write_byte(OSD_GROUP_ADDR,INDEX_RAM_DATA_H,str[i]>>8);
+				    write_byte(OSD_GROUP_ADDR,INDEX_RAM_DATA_L,str[i]);				 
+				  }
+				else{
+					break;
+				 }    
+			}			
+		}
+		else{
+			printf("fail due to horizontal num.");
+		}
+	}
+	else{
+		printf("fail due to vertical num.");
+	}
+}
+
+```
+
+---
+
+## 📝 Day 17
+
+- I have started working on the QR code task. It was understood that the QR code must be a perfectly square 1:1 ratio, but we are using a 16×22 font for each character.
+- Initially, I divided the QR code. A 176×176 px size fits well at the center of the screen. The QR code size might be further increased using the register settings.
+- The QR code is split into rows of 16×11 and columns of 22×8, resulting in 88 segments that need to be sent to the font RAM memory.
+
+<p align="center">
+<img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/user_manual.jpg" alt="User Manuel" width="400">
+</p>
+
+The first part of qr is look like this(hex):
+```c
+//1.1
+uint8_t QR11[] =
+{
+0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF0,
+0x00, 0xF0, 0x00, 0xF0, 0x00, 0xF0, 0xFF, 0xF1, 0xFF,
+0xF1, 0xFF, 0xF1, 0xFF, 0xF1, 0xFF, 0xF1, 0xFF, 0xF1,
+0xFF, 0xF1, 0xFF, 0xF1, 0xFF, 0xF1, 0xFF, 0xF1, 0xFF,
+0xF0, 0x00, 0xF0, 0x00, 0xF0, 0x00, 0xF8, 0x00
+};
+```
+
+It is correspond of binay:
+```c
+//22x2 bytes: 44 bytes
+11111111,11111111	
+11111111,11111111
+11111111,11111111
+11111111,11111111
+11110000,00000000
+11110000,00000000
+11110000,00000000
+11110000,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110001,11111111
+11110000,00000000
+11110000,00000000
+11110000,00000000
+11111000,00000000
+```
+- So, we will do it 88 times. As you know we need the easy way within firmware.
+
+Used editör:   
+[Split Image](https://pinetools.com/split-image)  
+[Bitmap Converter](https://www.teachmemicro.com/lcd-bitmap-converter-online/)
+
+---
+
+## 📝 Day 18, Day 19, Day 20
+
+- I handled the cabling as part of the system installation to facilitate product testing.
+
+
