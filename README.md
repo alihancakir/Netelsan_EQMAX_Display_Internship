@@ -310,11 +310,13 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
 
 - The AMT630A was not working when ESP32 started before.  
 > ✅ Solved: Implemented a delay before connection (2000 ms).
- ```c
-	   vTaskDelay(pdMS_TO_TICKS(2000));
-	   i2c_init();
-	   connect_display();
+
+```c
+      vTaskDelay(pdMS_TO_TICKS(2000));
+      i2c_init();
+      connect_display();  
 ```
+
 ---
 
 ## 📝 Day 14
@@ -325,7 +327,15 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
 ### Firmware Steps
 <p align="center">
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Test_Kit_Firmware_Steps.png" alt="Firmware Steps" width="600">
-</p>
+</p>  
+
+```c
+	disp_osd_block_state(0, 1);		//osd block 0 opened
+	disp_osd_config();			
+	disp_osd_fore_color_select(1);	//color red: OSD color
+	disp_video_color_select(3);		//color white: Video color
+	disp_osd_block0_menu();			//defined size and position of block0
+```
 
 ---
 
