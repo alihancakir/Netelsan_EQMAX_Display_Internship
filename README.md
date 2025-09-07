@@ -244,7 +244,7 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
 - Afterwards, without any documents, I started the examination of the SMPS circuit. I identified a roadmap.  
 - First of all, I started understanding Flyback topology.  
 - Step 2: Understanding SMPS topology.  
-- Step 3: Make a schematic with reverse engineering (by hand).  
+- Step 3: Make a schematic with reverse engineering.  
 
 ### Understanding Flyback & SMPS Topology
 <p align="center">
@@ -286,7 +286,7 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_TL431.jpg" alt="Understanding TL431" width="600">
 </p>
 
-- Eventually, I found the resistor as you can see in the figure above, but:  
+- Eventually, I founded the resistor as you can see in the figure above, but:  
 > ⚠️ Issue: The R18 resistor I selected (20 kΩ) was not working fluently due to the saturation of the output capacitor.  
 
 - Therefore, I revised the output voltage range to 16–20V. R18 should be 27 kΩ. Tested with multimeter and done.
@@ -309,7 +309,7 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
 > ✅ Solved: The I2C communication wasn’t working fluently. I used a better power supply and added pull-up resistors.  
 
 - The AMT630A was not working when ESP32 started before.  
-> ✅ Solved: Implemented a delay before connection (2 min).
+> ✅ Solved: Implemented a delay before connection (2000 ms).
  ```c
 	   vTaskDelay(pdMS_TO_TICKS(2000));
 	   i2c_init();
