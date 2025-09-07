@@ -119,7 +119,7 @@ All documentation related to the internship is shared here.
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_I2C(2).jpg" alt="Understanding I2C" width="400">
   </p>
   
-- For the **coherent**, I examined the **AMT630A I2C specification** from  → [url](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/AMT630A%20Driver%20Documents/Specifications_of_AMT630A.pdf)  
+- For the **coherent**, I examined the **AMT630A I2C specification** from  → [Datasheet](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/AMT630A%20Driver%20Documents/Specifications_of_AMT630A.pdf)  
 - Optimum frequency is **400 kHz**.
 
   <p align="center">
