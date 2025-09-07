@@ -235,7 +235,114 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Test_Kit_Revised.jpg" alt="Test Kit Revised" width="600">
   </p>
 
-
+  ---
   
 
-  
+## 📝 Day 11
+
+- New Task: Change a resistor and decrease the output voltage (adjustable 12VDC).  
+- Afterwards, without any documents, I started the examination of the SMPS circuit. I identified a roadmap.  
+- First of all, I started understanding Flyback topology.  
+- Step 2: Understanding SMPS topology.  
+- Step 3: Make a schematic with reverse engineering.  
+
+### Understanding Flyback & SMPS Topology
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_Flyback.png" alt="Understanding Flyback" width="600">
+</p>
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_SMPS.png" alt="Understanding SMPS" width="600">
+</p>
+
+### Schematic of SMPS
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/SMPS_1.png" alt="Schematic of SMPS" width="600">
+</p>
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/SMPS_Schematic.jpg" alt="Schematic of SMPS" width="600">
+</p>
+
+---
+
+## 📝 Day 12
+
+- Step 4: Use a design program for schematic and make a product list.  
+
+### Schematic of SMPS
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/SMPS_SCHEMATIC_kicad.jpg" alt="Schematic of SMPS" width="600">
+</p>
+
+### Product list of SMPS [See it](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/SMPS%20Reverse%20Engineering/~%24Product_List.xlsx)  
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Product_List.jpg" alt="Product list of SMPS" width="600">
+</p>
+
+- I noticed that if I change the voltage divider, it could work! Before the change, let’s examine the awesome IC.  
+- Step 5: Understanding TL431 topology  
+
+### Understanding TL431 topology
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Understanding_TL431.jpg" alt="Understanding TL431" width="600">
+</p>
+
+- Eventually, I founded the resistor as you can see in the figure above, but:  
+> ⚠️ Issue: The R18 resistor I selected (20 kΩ) was not working fluently due to the saturation of the output capacitor.  
+
+- Therefore, I revised the output voltage range to 16–20V. R18 should be 27 kΩ. Tested with multimeter and done.
+- Task ended successfully and was evaluated.  
+
+---
+
+## 📝 Day 13
+
+- The test kit is done. I am working on software and researching TFT display operating methods.  
+- Needless to say, the source of AMT630A was not made well. Also, I had meagre information.  
+- According to the datasheet, I am learning how I could reach the related registers with know-how.  
+- I created a roadmap for software steps:  
+
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Structure_of_Test_Kit.png" alt="Structure of Test Kit" width="600">
+</p>
+
+- Added buttons. [See it](https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Test_Kit_Display_Test.jpg)  
+> ✅ Solved: The I2C communication wasn’t working fluently. I used a better power supply and added pull-up resistors.  
+
+- The AMT630A was not working when ESP32 started before.  
+> ✅ Solved: Implemented a delay before connection (2000 ms).
+
+```c
+      vTaskDelay(pdMS_TO_TICKS(2000));
+      i2c_init();
+      connect_display();  
+```
+
+---
+
+## 📝 Day 14
+
+- Currently, I’ll work on software throughout the internship. Actually, this is a major task, however, I created some running hardware etc.  
+- I created a diagram for the stages of the coding process, because the datasheet doesn’t have one. Perhaps someone needs this.  
+
+### Firmware Steps
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Test_Kit_Firmware_Steps.png" alt="Firmware Steps" width="600">
+</p>  
+
+```c
+	disp_osd_block_state(0, 1);		//osd block 0 opened
+	disp_osd_config();			
+	disp_osd_fore_color_select(1);	//color red: OSD color
+	disp_video_color_select(3);		//color white: Video color
+	disp_osd_block0_menu();			//defined size and position of block0
+```
+
+---
+
+## 📝 Day 15
+
+- Ongoing process: The code structure is changing continuously. A figure of:  
+
+<p align="center">
+  <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Firmware_codes.jpg" alt="Firmware" width="600">
+</p>
