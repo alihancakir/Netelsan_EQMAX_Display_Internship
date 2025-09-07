@@ -1,0 +1,185 @@
+//***************************************FONT MAP**************************************/
+
+#define BOSLUK		 		0x0000
+#define N_0		 			0x0001
+#define N_1		 			0x0002
+#define N_2		 			0x0003
+#define N_3		 			0x0004
+#define N_4		 			0x0005
+#define N_5		 			0x0006
+#define N_6		 			0x0007
+#define N_7		 			0x0008
+#define N_8		 			0x0009
+#define N_9		 			0x000A
+#define A		 			0x000B
+#define B		 			0x000C
+#define C		 			0x000D
+#define C_2	 				0x0164
+#define D		 			0x000E
+#define E					0x000F
+#define F	 				0x0010
+#define G	 				0x0011
+#define G_2	 				0x0157
+#define H	 				0x0012
+#define I	 				0x0013
+#define I_2	 				0x014B
+#define J	 				0x0014
+#define K	 				0x0015
+#define L					0x0016
+#define M					0x0017
+#define N	 				0x0018
+#define O	 				0x0019
+#define O_2	 				0x0153
+#define P		 			0x001A
+#define Q	 				0x001B
+#define R		 			0x001C
+#define S		 			0x001D
+#define T		 			0x001E
+#define U  	 				0x001F
+#define U_2	 				0x0149
+#define V  	 				0x0020
+#define W  	 				0x0021
+#define X  	 				0x0022
+#define Y  	 				0x0023
+#define Z  	 				0x0024
+
+#define YUKARI_ICON			0x01C0
+#define ASAGI_ICON			0x01C1
+#define PANEL_ICON			0x01C2
+#define GOREVLI_ICON		0x01C3
+#define GUVENLIK_ICON		0x01C4
+#define SUBE_ICON			0x01C5
+#define AHIZE_ICON	  		0x01C6
+#define LCD_ICON			0x01C7
+#define SES_ICON	   		0x01C8
+#define AYAR_ICON	    	0x01C9
+#define KILIT_ICON   		0x01CA
+
+
+
+
+
+load_costum_font_ram(2, PANEL);
+			load_costum_font_ram(3, GOREVLI);
+			load_costum_font_ram(4, GUVENLIK);
+			load_costum_font_ram(5, SUBE);
+			
+			show_rom_char(0,9,A);
+			show_rom_char(0,10,R); 
+			show_rom_char(0,11,A);
+			show_rom_char(0,12,M);
+			show_rom_char(0,13,A);
+			show_rom_char(0,14,BOSLUK);
+			show_rom_char(0,15,E);
+			show_rom_char(0,16,K);
+			show_rom_char(0,17,R);
+			show_rom_char(0,18,A);
+			show_rom_char(0,19,N);
+			show_rom_char(0,20,I);    
+
+
+
+void show_rom_font(unsigned char address_h,unsigned char address_l,unsigned char font_h, unsigned char font_l)
+{
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_H,address_h);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_L,address_l);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,font_h);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,font_l);
+}
+
+void show_rom_char(unsigned char address_h,unsigned char address_l, uint16_t font)
+{
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_H,address_h);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_L,address_l);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,(font>>8));
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,font);
+}
+
+void send_each_color(unsigned char address,unsigned char font_h)
+{
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_H,0x00);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_L,address);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,EACH_ICON_COLOR,font_h);
+
+}
+void costum_send_font(unsigned char address, unsigned char font_l, unsigned char font_h) 
+{    
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_ADD_H, 0x00);
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_ADD_L, address);           
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_DATA_L, font_l); 
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_DATA_H, font_h);         
+}
+
+void load_costum_font_ram(unsigned char address, unsigned char *font) 
+{    
+	uint8_t i,adr=address*22;
+	
+	I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_ADD_H, 0x00);
+	
+	for(i=0 ; i<22 ;i++)
+	{		
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_ADD_L, adr+i);           
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_DATA_L, *font++); 
+    I2C_WriteByteOneReg (I2C0, OSD_REGISTERS, FONT_RAM_DATA_H, *font++);   
+	}		
+}
+
+void send_number(unsigned char address,unsigned char number)
+{
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_H,0x00);
+
+    I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_ADD_L,address);
+    
+     switch(number)
+     {
+       case 0:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x01);
+       break;
+       case 1:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x02);
+       break;
+       case 2:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x03);
+       break;
+       case 3:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x04);
+       break;
+       case 4:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x05);
+       break;
+       case 5:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x06);
+       break;
+       case 6:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x07);
+       break;
+       case 7:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x08);
+       break;
+       case 8:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x09);
+       break;
+       case 9:
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_H,0x00);
+       I2C_WriteByteOneReg(I2C0,OSD_REGISTERS,INDEX_RAM_DATA_L,0x0A);
+       break;
+     }
+             
+}
