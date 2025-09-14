@@ -278,7 +278,7 @@ write_byte(0xB6, 0x2A, 0x20); // Set background color to green
   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/Product_List.jpg" alt="Product list of SMPS" width="600">
 </p>
 
-- I noticed that if I change the voltage divider, it could work! Before the change, let’s examine the awesome IC.  
+- I noticed that if I change the voltage divider, it could work! Before the change, let’s examine the skillful IC.  
 - Step 5: Understanding TL431 topology  
 
 ### Understanding TL431 topology
