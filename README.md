@@ -13,7 +13,7 @@ All documentation related to the internship is shared here.
 ## 📝 Day 1
 
 - I used a **NuMaker-M032SE V1.3** development board and a **Nu-Link-Pro programmer**.  
-- Installed **Keil** → [Download here](https://www.nuvoton.com/tool-and-software/)  
+- Installed **Keil**.  
 - Examined the **datasheet** of M032SE.  
 
 > ⚠️ Issue: Programmer (Nu-Link-Pro) was not working while using UART communication.
@@ -489,5 +489,201 @@ Used editör:
 ## 📝 Day 18, Day 19, Day 20
 
 - I handled the cabling as part of the system installation to facilitate product testing.
+
+---
+
+## 📝 Day 20
+
+- I split the QR into 88 parts.  
+- A 16x22 font means: 16 (2x8 bits) → 2 bytes per row, and 2×22 bytes → 44 bytes for one font.  
+- The test size of the QR is 176x176 pixels, so horizontally 11 blocks and vertically 8 blocks form a precise square with the minimum common factor.  
+- I created a `font.c` file and loaded a user-custom font to RAM, but I don’t know what’s wrong with my code; I couldn’t find anything. It looks like this:  
+- After the 11 fonts, the device does not show the 12th font and also interferes with the first font.  
+
+
+ ```c
+//Font ram user field from font_ram.c
+#define QR1_1			0x01C0
+     .				   .
+     .				   .
+#define QR2_1			0x01C4
+     .				   .
+     .				   .
+#define QR3_1	   		0x01C8
+     .				   .
+     .				   .
+
+
+//QR bitmap bytes
+uint8_t QR1_1_BM[] = {
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0xF0, 0x1F, 0xF0, 0x18, 
+     .				   .
+     .				   .
+     .				   .
+uint8_t QR3_4_BM[] = {
+     .				   .
+}
+
+ ```
+
+ ```c
+void load_custom_font_ram(unsigned char position, unsigned char *font) 
+{    
+	uint8_t i,adr=position*22;
+	write_byte(OSD_GROUP_ADDR, FONT_RAM_ADD_H, 0x00);
+	for(i=0 ; i<22 ;i++)					//attention: *16 due to font x_size
+	{		
+	    write_byte(OSD_GROUP_ADDR, FONT_RAM_ADD_L,   adr+i);           
+	    write_byte(OSD_GROUP_ADDR, FONT_RAM_DATA_L, *font++); 
+	    write_byte(OSD_GROUP_ADDR, FONT_RAM_DATA_H, *font++);   
+	}		
+}
+
+ ```
+
+ ```c
+void show_qr(bool state){
+	if(state==1){
+		show_qr_block0(1);		//QR block open
+		
+		//QR bitmap send and show
+		load_custom_font_ram(0, QR1_1_BM);
+		show_custom_font_ram(0,QR1_1);
+     .				   .
+     .				   .
+     .				   .
+ ```
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step1.jpg" alt="Step1" width="400">
+</p>  
+
+- I realized that I have 88 fonts, and perhaps the byte boundary is the problem.  
+- In the same way, I resized the QR to 96x96(now 32 byte per font) and after 16 fonts, the device does not show the 17th font and again interferes with the first font.  
+
+
+---
+
+## 📝 Day 21
+
+- This time, I tried a 48x48 size, but as you can see in the figure, it looks illegible and the camera cannot read it.  
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step2.jpg" alt="Step2" width="400">
+</p>  
+
+
+
+---
+
+## 📝 Day 22
+
+- The datasheet is not well-documented.  
+- I guessed that 48x48 might be the best size, but when used it didn’t look good because the bitmap was too complex and detailed.  
+- Afterwards, I thought of using a simpler version of the QR code and created one, but it still looked unclear.  
+- For a quick result, I drew it in Paint. The camera can read it now. 
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step3.jpg" alt="Step3" width="400">
+</p>  
+
+
+---
+
+## 📝 Day 23
+
+- I created a new version:  
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step4.jpg" alt="Step3" width="400">
+</p>  
+
+
+- But it is scale:1-1 size and we need bigger one (like 5x). I examinated how can I get bigger the font and founded something with know-how.
+- Here is the part of designed not well datasheet related font byte boundary. I was confused about taht because it is saying available 192 char:
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/512byte_issue.jpg" alt="512byte issue" width="400">
+</p>  
+
+					
+---
+
+## 📝 Day 24
+
+- Eventually best configuration is the this. But it is looking wrong. Overflowing the font.
+- Contrary to i thought, the default size of font are 12x16! So when i getting bigger one i used like 16x22 so it is looking wrong.
+- i revised this size and after the many configuration i created this table:
+
+| vertical coef  | horizontal coef | Bit3:2 | Bit1:0 | Binary (Bit7-0) | Hex  |
+| -------------- | ----------------| ------ | ------ | --------------- | ---- |
+| 2x             | 2x              | 00     | 00     | 00000000        | 0x00 |
+| 2x             | 3x              | 00     | 01     | 00000001        | 0x01 |
+| 2x             | 4x              | 00     | 10     | 00000010        | 0x02 |
+| 2x             | 5x              | 00     | 11     | 00000011        | 0x03 |
+| 3x             | 2x              | 01     | 00     | 00000100        | 0x04 |
+| 3x             | 3x              | 01     | 01     | 00000101        | 0x05 |
+| 3x             | 4x              | 01     | 10     | 00000110        | 0x06 |
+| 3x             | 5x              | 01     | 11     | 00000111        | 0x07 |
+| 4x             | 2x              | 10     | 00     | 00001000        | 0x08 |
+| 4x             | 3x              | 10     | 01     | 00001001        | 0x09 |
+| 4x             | 4x              | 10     | 10     | 00001010        | 0x0A |
+| 4x             | 5x              | 10     | 11     | 00001011        | 0x0B |
+| 5x             | 2x              | 11     | 00     | 00001100        | 0x0C |
+| 5x             | 3x              | 11     | 01     | 00001101        | 0x0D |
+| 5x             | 4x              | 11     | 10     | 00001110        | 0x0E |
+| 5x             | 5x              | 11     | 11     | 00001111        | 0x0F | 
+
+ ```c
+void show_custom_font_ram(unsigned char position, uint16_t font){
+	
+	write_byte(OSD_GROUP_ADDR, 0x32, 0x0F);  // coef
+	
+	write_byte(OSD_GROUP_ADDR, 0x2B, 0xFF);  // vertical
+	write_byte(OSD_GROUP_ADDR, 0x2C, 0xFF);  // vertical
+	write_byte(OSD_GROUP_ADDR, 0x2D, 0xFF);  // vertical
+	write_byte(OSD_GROUP_ADDR, 0x2E, 0xFF);  // vertical
+	
+	write_byte(OSD_GROUP_ADDR, 0x2F, 0xFF);  // horizontal
+	write_byte(OSD_GROUP_ADDR, 0x30, 0xFF);  // horizontal
+	write_byte(OSD_GROUP_ADDR, 0x31, 0xFF);  // horizontal
+ ```
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step5.jpg" alt="Step4" width="400">
+</p>  
+
+				
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/osd_menu.jpg" alt="OSD Menu" width="400">
+</p>  
+
+
+---
+
+## 📝 Day 25
+
+- Finally, I implemented the QR code on the target device.  
+	
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step6.jpg" alt="Step6" width="400">
+</p>  
+
+
+---
+
+## Summary
+
+### What I Learned
+- Deep understanding of I²C communication  
+- TFT display operation and register-level driver development  
+- SMPS topology fundamentals  
+- Reverse-engineering techniques for circuit analysis  
+
+### What I Did
+- Solved issues despite limited documentation and hardware resources  
+- Conducted extensive research and examination  
+- Continuously created detailed documentation throughout the process  
+- Task is completed successfully
 
 
