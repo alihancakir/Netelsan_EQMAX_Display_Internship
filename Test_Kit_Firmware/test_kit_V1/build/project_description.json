@@ -820,7 +820,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/Nitro/workspace/test_kit_V1/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Users/Nitro/workspace/test_kit_V1/main/main.c", "C:/Users/Nitro/workspace/test_kit_V1/main/i2c.c", "C:/Users/Nitro/workspace/test_kit_V1/main/disp_driver.c" ],
+            "sources": [ "C:/Users/Nitro/workspace/test_kit_V1/main/main.c", "C:/Users/Nitro/workspace/test_kit_V1/main/i2c.c", "C:/Users/Nitro/workspace/test_kit_V1/main/disp_driver.c", "C:/Users/Nitro/workspace/test_kit_V1/main/qr_font.c" ],
             "include_dirs": []
         },
         "mbedtls": {

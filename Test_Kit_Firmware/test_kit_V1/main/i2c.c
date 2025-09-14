@@ -40,7 +40,7 @@ void write_byte(uint8_t i2c_reg_addr, uint8_t sub_reg_addr, uint8_t value)
 {
 	
 	uint8_t write_buf_2_bytes[2] = {sub_reg_addr, value};	
-	vTaskDelay(pdMS_TO_TICKS(20));
+	//vTaskDelay(pdMS_TO_TICKS(500));
     i2c_master_write_to_device(I2C_MASTER_NUM, i2c_reg_addr >> 1, write_buf_2_bytes,sizeof(write_buf_2_bytes),I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);								  
     
     if(count<2){	// the connected show 2 times without bytes 
@@ -80,6 +80,8 @@ void connect_display(void)
     write_byte(0xB6,0x78,0x02);
     vTaskDelay(pdMS_TO_TICKS(2000));
 }
-
+void i2c_delete(void){
+	i2c_driver_delete(I2C_MASTER_NUM);
+}
 
 

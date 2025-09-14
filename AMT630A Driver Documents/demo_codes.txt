@@ -46,8 +46,8 @@
 #define YUKARI_ICON			0x01C0
 #define ASAGI_ICON			0x01C1
 #define PANEL_ICON			0x01C2
-#define GOREVLI_ICON		0x01C3
-#define GUVENLIK_ICON		0x01C4
+#define GOREVLI_ICON			0x01C3
+#define GUVENLIK_ICON			0x01C4
 #define SUBE_ICON			0x01C5
 #define AHIZE_ICON	  		0x01C6
 #define LCD_ICON			0x01C7
