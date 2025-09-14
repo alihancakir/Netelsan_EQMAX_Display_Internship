@@ -496,7 +496,7 @@ Used editör:
 
 - I split the QR into 88 parts.  
 - A 16x22 font means: 16 (2x8 bits) → 2 bytes per row, and 2×22 bytes → 44 bytes for one font.  
-- The test size of the QR is 176x176 pixels, so horizontally 11 blocks and vertically 8 blocks form a precise square with the minimum common factor.  
+> ⚠️ Issue: The test size of the QR is 176x176 pixels, so horizontally 11 blocks and vertically 8 blocks form a precise square with the minimum common factor.  
 - I created a `font.c` file and loaded a user-custom font to RAM, but I don’t know what’s wrong with my code; I couldn’t find anything. It looks like this:  
 - After the 11 fonts, the device does not show the 12th font and also interferes with the first font.  
 
@@ -559,7 +559,7 @@ void show_qr(bool state){
 </p>  
 
 - I realized that I have 88 fonts, and perhaps the byte boundary is the problem.  
-- In the same way, I resized the QR to 96x96(now 32 byte per font) and after 16 fonts, the device does not show the 17th font and again interferes with the first font.  
+> ⚠️ Issue: In the same way, I resized the QR to 96x96(now 32 byte per font) and after 16 fonts, the device does not show the 17th font and again interferes with the first font.  
 
 
 ---
@@ -581,7 +581,7 @@ void show_qr(bool state){
 - The datasheet is not well-documented.  
 - I guessed that 48x48 might be the best size, but when used it didn’t look good because the bitmap was too complex and detailed.  
 - Afterwards, I thought of using a simpler version of the QR code and created one, but it still looked unclear.  
-- For a quick result, I drew it in Paint. The camera can read it now. 
+> ✅ Solved: For a quick result, I drew it in Paint. The camera can read it now. 
 
 <p align="center"> 
    <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step3.jpg" alt="Step3" width="400">
