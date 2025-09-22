@@ -669,7 +669,30 @@ void show_custom_font_ram(unsigned char position, uint16_t font){
    <img src="https://github.com/alihancakir/Archive-of-Nuvoton/blob/main/images/qr_step6.jpg" alt="Step6" width="400">
 </p>  
 
+- The lastest QR showing on display. This one has real bitmap address beceause i did with my hand the bit array.
 
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Netelsan_EQMAX_Display_Internship/blob/main/images/divided_qr.png" alt="Devided QR" width="200">
+</p>  
+The bits brief example:
+
+```c
+	00000000000000000000000000000000000000000
+	00000000000000000000000000000000000000000
+	00111111100110011111011111010010111111100
+	00100000100111000111101110011110100000100
+	00101110101010110000010100000110101110100
+	00101110101101010001000010010100101110100
+	00101110101001100010011101010010101110100
+	00100000101101000010001110011110100000100
+	00111111101010101010101010101010111111100
+	00000000001100011010111101000100000000000
+```
+
+<p align="center"> 
+   <img src="https://github.com/alihancakir/Netelsan_EQMAX_Display_Internship/blob/main/images/lastest_qr_code_showing.jpg" alt="Lastest QR" width="400">
+</p>  
+  
 ---
 
 ## Summary
