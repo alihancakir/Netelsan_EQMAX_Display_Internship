@@ -486,7 +486,7 @@ Used editör:
 
 ---
 
-## 📝 Day 18, Day 19, Day 20
+## 📝 Day 18, Day 19
 
 - I handled the cabling as part of the system installation to facilitate product testing.
 
