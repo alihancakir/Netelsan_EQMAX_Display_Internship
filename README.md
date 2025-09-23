@@ -6,6 +6,9 @@
 
 ## 📢 _**Task: Wake Up the Intercom Unit From Zero**_
 
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2560px-Flag_of_Turkey.svg.png" width="24" /> ***Türkçe | Stajım boyunca yaptığım çalışmaların Türkçe dökümanı için [Staj Defteri](https://github.com/alihancakir/Netelsan_EQMAX_Display_Internship/blob/main/Internship_Report.pdf)***
+
 All documentation related to the internship is shared here.
 
 ---
